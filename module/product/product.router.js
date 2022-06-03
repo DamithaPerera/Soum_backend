@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
+const {Router} = require('express');
+const routes = Router();
 const {
     getAllProductController, addProductController, getOneProductController, updateOneProductController,
 } = require('./product.controller');
+const {addProductValidation, updateProductValidation, getOneProductValidation, getAllProductValidation} = require('./product.validation');
 
 /**
  * @swagger
@@ -61,7 +62,7 @@ const {
  *    500:
  *     description : error
  */
-router.route('/').post(addProductController);
+routes.post('/', addProductValidation, addProductController);
 
 /**
  * @swagger
@@ -95,7 +96,7 @@ router.route('/').post(addProductController);
  *    500:
  *     description : error
  */
-router.route('/').get(getAllProductController);
+routes.get('/', getAllProductValidation, getAllProductController);
 
 /**
  * @swagger
@@ -123,7 +124,7 @@ router.route('/').get(getAllProductController);
  *    500:
  *     description : error
  */
-router.route('/:id').get(getOneProductController);
+routes.get('/:id', getOneProductValidation, getOneProductController);
 
 
 /**
@@ -151,7 +152,7 @@ router.route('/:id').get(getOneProductController);
  *    500:
  *     description : error
  */
-router.route('/:id').put(updateOneProductController);
+routes.put('/:id', updateProductValidation, updateOneProductController);
 
 
-module.exports = router;
+module.exports = routes;
