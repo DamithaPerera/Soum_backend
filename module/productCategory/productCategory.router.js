@@ -1,9 +1,13 @@
-const express = require('express');
-const router = express.Router();
+const {Router} = require('express');
+const routes = Router();
 const {
     addProductCategoryController, getAllProductCategoryController, getOneProductCategoryController,
     updateOneProductCategoryController
 } = require('./productCategory.controller');
+const {
+    addProductCategoryValidation, getAllProductCategoryValidation, getOneProductCategoryValidation,
+    updateProductCategoryValidation
+} = require("./productCategory.validation");
 
 /**
  * @swagger
@@ -58,7 +62,7 @@ const {
  *    500:
  *     description : error
  */
-router.route('/').post(addProductCategoryController);
+routes.post('/', addProductCategoryValidation, addProductCategoryController);
 
 /**
  * @swagger
@@ -92,7 +96,7 @@ router.route('/').post(addProductCategoryController);
  *    500:
  *     description : error
  */
-router.route('/').get(getAllProductCategoryController);
+routes.get('/', getAllProductCategoryValidation, getAllProductCategoryController);
 
 /**
  * @swagger
@@ -120,7 +124,7 @@ router.route('/').get(getAllProductCategoryController);
  *    500:
  *     description : error
  */
-router.route('/:id').get(getOneProductCategoryController);
+routes.get('/:id', getOneProductCategoryValidation, getOneProductCategoryController);
 
 /**
  * @swagger
@@ -147,7 +151,7 @@ router.route('/:id').get(getOneProductCategoryController);
  *    500:
  *     description : error
  */
-router.route('/:id').put(updateOneProductCategoryController);
+routes.put('/:id', updateProductCategoryValidation, updateOneProductCategoryController);
 
 
-module.exports = router;
+module.exports = routes;

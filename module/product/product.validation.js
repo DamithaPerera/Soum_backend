@@ -32,9 +32,9 @@ exports.addProductValidation = (req, res, next) => {
 exports.updateProductValidation = (req, res, next) => {
 
     const schema = Joi.object({
-        productName: Joi.string().required(),
-        price: Joi.number().required(),
-        images: Joi.array().required(),
+        productName: Joi.string().optional(),
+        price: Joi.number().optional(),
+        images: Joi.array().optional(),
     });
 
     const result = schema.validate(req.body);
