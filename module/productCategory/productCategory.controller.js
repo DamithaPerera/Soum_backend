@@ -2,6 +2,8 @@ const productCategory = require('./productCategory.service');
 
 let msg = {}
 
+// @desc      create category
+// @route     POST /api/v1/category
 exports.addProductCategoryController = async (req, res, next) => {
     try {
         const requestBody = req.body;
@@ -17,7 +19,8 @@ exports.addProductCategoryController = async (req, res, next) => {
     }
 }
 
-
+// @desc      Get all categories
+// @route     GET /api/v1/category
 exports.getAllProductCategoryController = async (req, res, next) => {
     try {
         const {skip, limit} = req.query
@@ -33,6 +36,8 @@ exports.getAllProductCategoryController = async (req, res, next) => {
     }
 }
 
+// @desc      get on category
+// @route     GET /api/v1/category
 exports.getOneProductCategoryController = async (req, res, next) => {
     try {
         const categoryId = req.params.id
@@ -48,6 +53,8 @@ exports.getOneProductCategoryController = async (req, res, next) => {
     }
 }
 
+// @desc      update on category
+// @route     PUT /api/v1/category
 exports.updateOneProductCategoryController = async (req, res, next) => {
     try {
         const categoryId = req.params.id

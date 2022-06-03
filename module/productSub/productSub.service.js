@@ -12,7 +12,16 @@ exports.getAllProductSubCategoryService = async (skip, limit) => {
 }
 
 exports.getOneProductSubCategoryService = async (subCatId) => {
-    const subCategory = addProductSubCategoryRepo.getOneProductSubCategoryRepo(subCatId)
+    const subCategory = await addProductSubCategoryRepo.getOneProductSubCategoryRepo(subCatId)
+    if (!subCategory) {
+        throw new Error(`Invalid subCategory id of ${subCatId}`)
+    }
+    return subCategory
+}
+
+
+exports.updateOneProductSubCategoryService = async (subCatId, requestBody) => {
+    const subCategory = await addProductSubCategoryRepo.updateOneProductSubCategoryRepo(subCatId, requestBody)
     if (!subCategory) {
         throw new Error(`Invalid subCategory id of ${subCatId}`)
     }

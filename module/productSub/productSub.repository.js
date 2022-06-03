@@ -12,3 +12,7 @@ exports.getAllProductSubCategoryRepo = async (skip, limit) => {
 exports.getOneProductSubCategoryRepo = async (subCatId) => {
     return productCategory.findById(subCatId).populate('parent').exec();
 }
+
+exports.updateOneProductSubCategoryRepo = async (subCatId, requestBody ) => {
+    return productCategory.updateOne({_id: subCatId}, {$set: requestBody}).exec()
+}

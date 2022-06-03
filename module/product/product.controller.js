@@ -2,6 +2,8 @@ const productService = require('./product.service');
 
 let msg = {}
 
+// @desc      Get getAllProducts
+// @route     POST /api/v1/product
 exports.addProductController = async (req, res, next) => {
     try {
         const requestBody = req.body;
@@ -17,6 +19,8 @@ exports.addProductController = async (req, res, next) => {
     }
 }
 
+// @desc      Get getAllProducts
+// @route     GET /api/v1/product
 exports.getAllProductController = async (req, res, next) => {
     try {
         const {skip, limit} = req.query
@@ -32,6 +36,8 @@ exports.getAllProductController = async (req, res, next) => {
     }
 }
 
+// @desc      Get get one Product
+// @route     GET /api/v1/product
 exports.getOneProductController = async (req, res, next) => {
     try {
         const productId = req.params.id
@@ -47,6 +53,8 @@ exports.getOneProductController = async (req, res, next) => {
     }
 }
 
+// @desc      Update one product
+// @route     PUT /api/v1/products
 exports.updateOneProductController = async (req, res, next) => {
     try {
         const productId = req.params.id
