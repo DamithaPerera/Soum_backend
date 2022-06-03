@@ -16,9 +16,8 @@ const ProductSchema = new mongoose.Schema(
             maxlength: [32, "price can not be more than 32 characters"],
         },
 
-        image: {
-            type: String,
-            default: "https://www.tisrilanka.org/wp-content/uploads/2016/01/default-placeholder.png",
+        images: {
+            type: Array
         },
         productState: {
             type: String,
