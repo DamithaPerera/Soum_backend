@@ -6,6 +6,9 @@ const dbConnection = require('./config/db')
 const product = require('./module/product/product.router');
 const category = require('./module/productCategory/productCategory.router');
 const subCategory = require('./module/productSub/productSub.router');
+const {graphqlHTTP} = require("express-graphql");
+const graphQlSchema = require("./graphql/schema/index");
+const graphQlResolvers = require("./graphql/resolver/index");
 
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -48,11 +51,21 @@ const options = {
             }
         ]
     },
-    // apis: ["./routes/*.js"],
-    apis: ['./module/productCategory/productCategory.router.js', './module/product/product.router.js', './module/productSub/productSub.router.js'],
+    apis: ['./module/productCategory/productCategory.router.js',
+        './module/product/product.router.js',
+        './module/productSub/productSub.router.js'],
 };
 const specs = swaggerJsDoc(options);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+
+app.use(
+    "/graphql",
+    graphqlHTTP({
+        schema: graphQlSchema,
+        rootValue: graphQlResolvers,
+        graphiql: true,
+    })
+);
 
 app.listen(port, () =>
     console.log(`🚀 Server ready at http://localhost:3000`),
