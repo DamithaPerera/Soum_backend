@@ -6,8 +6,8 @@ exports.addProductService = async (requestBody) => {
 
 }
 
-exports.getAllProductService = async () => {
-    return productRepo.getAllProductRepo()
+exports.getAllProductService = async (skip, limit) => {
+    return productRepo.getAllProductRepo(+skip, +limit)
 
 }
 

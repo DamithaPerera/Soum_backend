@@ -19,7 +19,8 @@ exports.addProductSubCategoryController = async (req, res, next) => {
 
 exports.getAllProductSubCategoryController = async (req, res, next) => {
     try {
-        const data = await productCategory.getAllProductSubCategoryService();
+        const {skip, limit} = req.query
+        const data = await productCategory.getAllProductSubCategoryService(skip, limit);
 
         msg.message = "success"
         msg.data = data

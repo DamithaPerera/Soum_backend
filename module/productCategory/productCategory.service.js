@@ -7,8 +7,8 @@ exports.addProductCategoryService = async (requestBody) => {
 }
 
 
-exports.getAllProductCategoryService = async () => {
-    return productCategoryRepo.getAllProductCategoryRepo()
+exports.getAllProductCategoryService = async (skip, limit) => {
+    return productCategoryRepo.getAllProductCategoryRepo(+skip, +limit)
 
 }
 

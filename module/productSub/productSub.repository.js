@@ -5,8 +5,8 @@ exports.addProductSubCategoryRepo = async (requestBody) => {
     return productCategory.create(requestBody);
 }
 
-exports.getAllProductSubCategoryRepo = async () => {
-    return productCategory.find({}).populate('parent').exec();
+exports.getAllProductSubCategoryRepo = async (skip, limit) => {
+    return productCategory.find({}, {}, {skip, limit}).populate('parent', '-subCategory').exec();
 }
 
 exports.getOneProductSubCategoryRepo = async (subCatId) => {

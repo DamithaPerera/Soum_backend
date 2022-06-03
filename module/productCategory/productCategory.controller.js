@@ -20,7 +20,8 @@ exports.addProductCategoryController = async (req, res, next) => {
 
 exports.getAllProductCategoryController = async (req, res, next) => {
     try {
-        const data = await productCategory.getAllProductCategoryService();
+        const {skip, limit} = req.query
+        const data = await productCategory.getAllProductCategoryService(skip, limit);
 
         msg.message = "success"
         msg.data = data

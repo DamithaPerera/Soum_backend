@@ -19,7 +19,8 @@ exports.addProductController = async (req, res, next) => {
 
 exports.getAllProductController = async (req, res, next) => {
     try {
-        const data = await productService.getAllProductService();
+        const {skip, limit} = req.query
+        const data = await productService.getAllProductService(skip, limit);
 
         msg.message = "success"
         msg.data = data

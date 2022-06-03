@@ -7,8 +7,8 @@ exports.addProductRepo = async (requestBody) => {
 }
 
 
-exports.getAllProductRepo = async () => {
-    return product.find().populate({
+exports.getAllProductRepo = async (skip, limit) => {
+    return product.find({}, {}, {skip, limit}).populate({
         path: 'category',
         populate: {
             path: 'subCategory'
