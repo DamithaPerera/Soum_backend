@@ -1,9 +1,13 @@
-const express = require('express');
-const router = express.Router();
+const {Router} = require('express');
+const routes = Router();
 const {
     addProductSubCategoryController, getAllProductSubCategoryController, getOneProductSubCategoryController,
     updateOneProductSubCategoryController
 } = require('./productSub.controller');
+const {
+    addProductSubCategoryValidation, getAllProductSubCategoryValidation, getOneProductSubCategoryValidation,
+    updateProductSubCategoryValidation
+} = require("./productSub.validation");
 
 
 /**
@@ -59,7 +63,7 @@ const {
  *    500:
  *     description : error
  */
-router.route('/').post(addProductSubCategoryController);
+routes.post('/', addProductSubCategoryValidation, addProductSubCategoryController);
 
 /**
  * @swagger
@@ -93,7 +97,7 @@ router.route('/').post(addProductSubCategoryController);
  *    500:
  *     description : error
  */
-router.route('/').get(getAllProductSubCategoryController);
+routes.get('/', getAllProductSubCategoryValidation, getAllProductSubCategoryController);
 
 /**
  * @swagger
@@ -121,7 +125,7 @@ router.route('/').get(getAllProductSubCategoryController);
  *    500:
  *     description : error
  */
-router.route('/:id').get(getOneProductSubCategoryController);
+routes.get('/:id', getOneProductSubCategoryValidation, getOneProductSubCategoryController);
 
 /**
  * @swagger
@@ -148,7 +152,7 @@ router.route('/:id').get(getOneProductSubCategoryController);
  *    500:
  *     description : error
  */
-router.route('/:id').put(updateOneProductSubCategoryController);
+routes.put('/:id', updateProductSubCategoryValidation, updateOneProductSubCategoryController);
 
 
-module.exports = router;
+module.exports = routes;
