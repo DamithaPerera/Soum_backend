@@ -5,3 +5,8 @@ exports.addProductSubCategoryService = async (requestBody) => {
     return addProductSubCategoryRepo.addProductSubCategoryRepo(requestBody)
 
 }
+
+exports.getAllProductSubCategoryService = async () => {
+    return addProductSubCategoryRepo.getAllProductSubCategoryRepo()
+
+}
