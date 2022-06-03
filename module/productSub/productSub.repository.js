@@ -6,5 +6,9 @@ exports.addProductSubCategoryRepo = async (requestBody) => {
 }
 
 exports.getAllProductSubCategoryRepo = async () => {
-    return productCategory.find({});
+    return productCategory.find({}).populate('parent').exec();
+}
+
+exports.getOneProductSubCategoryRepo = async (subCatId) => {
+    return productCategory.findById(subCatId).populate('parent').exec();
 }

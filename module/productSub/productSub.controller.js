@@ -30,3 +30,18 @@ exports.getAllProductSubCategoryController = async (req, res, next) => {
         res.status(400).json(msg);
     }
 }
+
+exports.getOneProductSubCategoryController = async (req, res, next) => {
+    try {
+        const subCatId = req.params.id
+        const data = await productCategory.getOneProductSubCategoryService(subCatId);
+
+        msg.message = "success"
+        msg.data = data
+        res.status(200).json(msg);
+    } catch (err) {
+        msg.message = "fail"
+        msg.data = err.message
+        res.status(400).json(msg);
+    }
+}
