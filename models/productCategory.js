@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const {ObjectId} = mongoose.Schema;
 
 const productCategorySchema = new mongoose.Schema(
     {
@@ -16,6 +17,10 @@ const productCategorySchema = new mongoose.Schema(
             required: [true, "please add  category description"],
             minlength: [3, "too short"],
             maxlength: [100, "Too Long"],
+        },
+        subCategory: {
+            type: ObjectId,
+            ref: "ProductSub"
         },
     },
     {timestamps: true}

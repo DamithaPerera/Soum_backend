@@ -15,3 +15,8 @@ exports.getOneProductService = async (productId) => {
     return productRepo.getOneProductRepo(productId)
 
 }
+
+exports.updateOneProductService = async (productId, requestBody) => {
+    return productRepo.updateOneProductRepo(productId, requestBody)
+
+}

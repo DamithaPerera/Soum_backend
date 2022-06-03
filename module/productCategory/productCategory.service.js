@@ -20,3 +20,12 @@ exports.getOneProductCategoryService = async (categoryId) => {
     return category
 
 }
+
+exports.updateOneProductCategoryService = async (categoryId, requestBody) => {
+    const category = await productCategoryRepo.updateOneProductCategoryRepo(categoryId, requestBody)
+    if (!category) {
+        throw new Error(`Invalid category id of ${categoryId}`)
+    }
+    return category
+
+}

@@ -8,11 +8,26 @@ exports.addProductRepo = async (requestBody) => {
 
 
 exports.getAllProductRepo = async () => {
-    return product.create()
+    return product.find().populate({
+        path: 'category',
+        populate: {
+            path: 'subCategory'
+        }
+    })
 
 }
 
 exports.getOneProductRepo = async (productId) => {
-    return product.findById(productId)
+    return product.findById(productId).populate({
+        path: 'category',
+        populate: {
+            path: 'subCategory'
+        }
+    })
+
+}
+
+exports.updateOneProductRepo = async (productId, requestBody) => {
+    return product.updateOne({_id: productId}, {$set: requestBody}).exec()
 
 }

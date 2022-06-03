@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const {ObjectId} = mongoose.Schema;
 
 const ProductSchema = new mongoose.Schema(
     {
@@ -31,6 +32,10 @@ const ProductSchema = new mongoose.Schema(
         paymentSuccess: {
             type: Boolean,
             default: false,
+        },
+        category: {
+            type: ObjectId,
+            ref: "ProductCategory"
         },
     },
     {timestamps: true}
