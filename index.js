@@ -3,6 +3,8 @@ const cors = require('cors');
 
 const dbConnection = require('./config/db')
 
+const product = require('./module/product/product.router');
+
 const port = 3000;
 const app = express();
 
@@ -14,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 
+app.use('/api/v1/product', product);
 
 
 app.listen(port, () =>

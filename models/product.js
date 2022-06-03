@@ -17,7 +17,7 @@ const ProductSchema = new mongoose.Schema(
         },
 
         image: {
-            type: String,
+            type: Array,
             default: "https://www.tisrilanka.org/wp-content/uploads/2016/01/default-placeholder.png",
         },
         productState: {
