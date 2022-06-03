@@ -16,3 +16,18 @@ exports.addProductCategoryController = async (req, res, next) => {
         res.status(400).json(msg);
     }
 }
+
+
+exports.getAllProductCategoryController = async (req, res, next) => {
+    try {
+        const data = await productCategory.getAllProductCategoryService();
+
+        msg.message = "success"
+        msg.data = data
+        res.status(200).json(msg);
+    } catch (err) {
+        msg.message = "fail"
+        msg.data = err.message
+        res.status(400).json(msg);
+    }
+}
